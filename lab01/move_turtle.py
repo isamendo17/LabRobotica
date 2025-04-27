@@ -136,7 +136,7 @@ class TurtleController(Node):
         self.publisher_.publish(msg)
 
     def drawCharacter(self, char):
-        # Dibuja caracteres (M, S, I, A, C, P, V) con la tortuga
+        # Dibuja caracteres (M, S, I, A, C, P) con la tortuga
         if char == 'p':
             msg = Twist()
 
