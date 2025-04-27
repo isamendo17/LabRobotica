@@ -11,7 +11,7 @@ Integrantes:
 
 ```mermaid
 flowchart TD
-    A[Inicio] --> B[Imprimir info y controles en pantalla]
+    A[Inicio] --> B[Imprimir información y controles en pantalla]
     B --> C[Leer tecla]
     C --> D{¿Tecla presionada?}
     D -- No --> C
