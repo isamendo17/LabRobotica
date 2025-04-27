@@ -9,6 +9,7 @@ import curses
 import time
 import math
 
+# Corresponde al nodo que se va a crear en ROS2
 class TurtleController(Node):
     def __init__(self):
         super().__init__('turtle_controller')
