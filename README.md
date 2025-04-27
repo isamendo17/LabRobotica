@@ -11,8 +11,8 @@ Integrantes:
 flowchart TD
     A[Inicio] --> B[Imprimir controles en pantalla]
     B --> C[Leer tecla]
-    D{¿Tecla presionada?} --> C
-    C -- No --> D
+    C --> D{¿Tecla presionada?}
+    D -- No --> C
     D -- Sí --> E{¿Tecla de dirección?}
     E -- Sí --> F{¿Flecha arriba?}
     E -- No --> G{¿Letra A, S, C, P, I o M?}
@@ -34,4 +34,5 @@ flowchart TD
     P -- Sí --> Q[Girar a la derecha]
     P -- No --> C
     Q --> C
+
 ```
