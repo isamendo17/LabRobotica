@@ -6,3 +6,12 @@ Integrantes:
 - Isabella Mendoza Cáceres
 
 ## Laboratorio No. 1
+
+```mermaid
+flowchart TD
+    A[Inicio] --> B{¿Está bien?}
+    B -- Sí --> C[Seguir adelante]
+    B -- No --> D[Corregir problema]
+    D --> B
+    C --> E[Fin]
+```
