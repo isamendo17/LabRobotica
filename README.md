@@ -11,7 +11,7 @@ Integrantes:
 ### Objetivos
 El objetivo de este laboratorio es controlar una tortuga en el simulador `turtlesim` utilizando ROS 2. En el código se implementa un nodo llamado `turtle_controller`, que permite mover la tortuga de forma manual con el teclado y dibujar las letras de las iniciales de los estudiantes (A, S, C, P, I y M) en la pantalla. Además, se integra una función para limpiar la pantalla del simulador.
 
-*Librerías utilizadas: *
+*Librerías utilizadas:*
 - `rclpy`: Permite programar nodos en Python utilizando ROS 2.
 - `rclpy.node.Node`: Clase base para crear nodos ROS 2.
 - `std_srvs.srv.Empty`: Servicio estándar utilizado para limpiar la pantalla del `turtlesim`.
@@ -22,7 +22,7 @@ El objetivo de este laboratorio es controlar una tortuga en el simulador `turtle
 - `curses`: Librería para gestionar la entrada del teclado de forma no bloqueante en consola.
 - `time`, `math`: Librerías estándar para temporizaciones y cálculos matemáticos.
 
-*Descripción de las funciones principales: *
+*Descripción de las funciones principales:*
 - **`__init__`**: Inicializa el nodo, crea el publicador para enviar comandos de movimiento y suscripciones a la posición de la tortuga.
 - **`pose_callback`**: Actualiza las variables internas `x` y `y` con la posición actual de la tortuga.
 - **`clear_screen`**: Llama al servicio `/clear` para limpiar la pantalla del simulador.
@@ -83,4 +83,4 @@ flowchart TD
     P -- No --> C
     Q --> C
 ```
-
+---
