@@ -388,7 +388,9 @@ class TurtleController(Node):
                         print(e)
 
             time.sleep(0.1)
-
+    def run_curses(node, stop_event):    
+        curses.wrapper(lambda stdscr: node.read_keys(stdscr, stop_event))
+    
     def main():
         # Inicia ROS2 y crea el nodo
         rclpy.init()
