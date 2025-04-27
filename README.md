@@ -11,7 +11,7 @@ Integrantes:
 ### Objetivos
 El objetivo de este laboratorio es controlar una tortuga en el simulador `turtlesim` utilizando ROS 2. En el código se implementa un nodo llamado `turtle_controller`, que permite mover la tortuga de forma manual con el teclado y dibujar las letras de las iniciales de los estudiantes (A, S, C, P, I y M) en la pantalla. Además, se integra una función para limpiar la pantalla del simulador.
 
-*Librerías utilizadas*
+*Librerías utilizadas: *
 - `rclpy`: Permite programar nodos en Python utilizando ROS 2.
 - `rclpy.node.Node`: Clase base para crear nodos ROS 2.
 - `std_srvs.srv.Empty`: Servicio estándar utilizado para limpiar la pantalla del `turtlesim`.
@@ -22,7 +22,7 @@ El objetivo de este laboratorio es controlar una tortuga en el simulador `turtle
 - `curses`: Librería para gestionar la entrada del teclado de forma no bloqueante en consola.
 - `time`, `math`: Librerías estándar para temporizaciones y cálculos matemáticos.
 
-### Descripción de las funciones principales
+*Descripción de las funciones principales: *
 - **`__init__`**: Inicializa el nodo, crea el publicador para enviar comandos de movimiento y suscripciones a la posición de la tortuga.
 - **`pose_callback`**: Actualiza las variables internas `x` y `y` con la posición actual de la tortuga.
 - **`clear_screen`**: Llama al servicio `/clear` para limpiar la pantalla del simulador.
@@ -32,7 +32,7 @@ El objetivo de este laboratorio es controlar una tortuga en el simulador `turtle
 - **`move_forward`**: Mueve la tortuga hacia adelante a una velocidad y tiempo determinados.
 - **`drawCharacter`**: Implementa la lógica para dibujar diferentes letras (`M`, `A`, `S`, `I`, `C`, `P`) mediante combinaciones de movimientos y rotaciones.
 - **`rotate_turtle`**: Rota a la tortuga un ángulo relativo especificado usando el servicio de teletransporte relativo.
-- **`read_keys`**: Usa la librería `curses` para leer entradas de teclado de manera continua y no bloqueante. Asocia teclas específicas a acciones de movimiento o de dibujo.
+- **`read_keys`**: Usa la librería `curses` para leer entradas de teclado de manera continua y que no se bloquee. Asocia teclas específicas a acciones de movimiento o de dibujo.
 - **`run_curses` y `main`**: Lanzan la lectura de teclado en un hilo separado y ejecutan el nodo de ROS 2 de manera continua.
 
 ### Procedimiento realizado
@@ -50,7 +50,7 @@ El objetivo de este laboratorio es controlar una tortuga en el simulador `turtle
 - **Servicios de teletransporte**: Para posicionar y rotar a la tortuga de manera precisa, se emplean los servicios `TeleportRelative` y `TeleportAbsolute` en lugar de comandos de velocidad tradicionales.
 
 ### Funcionamiento general
-Entonces, como funcionamiento general se tiene que el usuario ejecuta el nodo `turtle_controller`. Desde la terminal, mediante las teclas de dirección, puede mover a la tortuga hacia adelante, atrás o girarla. También puede presionar letras específicas (`M`, `A`, `S`, `I`, `C`, `P`) para que la tortuga dibuje esa letra en la pantalla del `turtlesim`. Adicionalmente, la tecla `V` limpia la pantalla. Todo esto ocurre mientras el nodo mantiene actualizada la posición y estado de la tortuga en tiempo real.
+Entonces, como funcionamiento general se tiene que el usuario ejecuta el nodo `turtle_controller`. Desde la terminal, mediante las teclas de dirección, puede mover a la tortuga hacia adelante, atrás o girarla. También puede presionar letras específicas ( `A`, `S`, `C`, `P`, `I`, `M`) para que la tortuga dibuje esa letra en la pantalla del `turtlesim`. Adicionalmente, la tecla `V` limpia la pantalla. Todo esto ocurre mientras el nodo mantiene actualizada la posición y estado de la tortuga en tiempo real.
 
 
 ### Diagrama de flujo
