@@ -85,6 +85,6 @@ flowchart TD
 ```
 ### Video explicativo
 
-[![Alt text](https://img.youtube.com/vi/uSUkn7wwos /0.jpg)](https://www.youtube.com/watch?v=uSUkn7wwos)
+[![Alt text](https://img.youtube.com/vi/YuSUkn7wwos/0.jpg)](https://www.youtube.com/watch?v=YuSUkn7wwos)
 
 ---
