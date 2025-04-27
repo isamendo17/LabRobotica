@@ -12,8 +12,8 @@ flowchart TD
     A[Inicio] --> B[Imprimir controles en pantalla]
     B --> C[Leer tecla]
     C --> D{¿Tecla presionada?}
+    C -- No --> D
     D -- Sí --> E{¿Tecla de dirección?}
-    D -- No --> C
     E -- Sí --> F{¿Flecha arriba?}
     E -- No --> G{¿Letra A, S, C, P, I o M?}
     F -- Sí --> H[Mover hacia adelante]
