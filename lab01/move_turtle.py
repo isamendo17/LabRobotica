@@ -9,17 +9,21 @@ import curses
 import time
 import math
 
-# Corresponde al nodo que se va a crear en ROS2
+# Clase principal que controla la tortuga en ROS2
 class TurtleController(Node):
     def __init__(self):
         super().__init__('turtle_controller')
+        # Publicador para enviar comandos de movimiento a la tortuga
         self.publisher_ = self.create_publisher(Twist, '/turtle1/cmd_vel', 10)
+        # Temporizador para actualizar la posición y controlar la tortuga
         self.timer = self.create_timer(0.3, self.move_turtle2)
+        # Variables para controlar el estado
         self.running = True
         self.action = ""
         self.drawing = False
         self.turn_off = False
 
+        # Suscripción para recibir la posición de la tortuga
         self.subscription = self.create_subscription(
             Pose,
             '/turtle1/pose',
@@ -30,10 +34,12 @@ class TurtleController(Node):
         self.y = 0.0
 
     def pose_callback(self, msg):
+        # Callback para actualizar las coordenadas de la tortuga
         self.x = msg.x
         self.y = msg.y
 
     def clear_screen(self):
+        # Limpia la pantalla de la simulación de la tortuga
         client = self.create_client(Empty, '/clear')
         while not client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('Esperando al servicio /clear...')
@@ -43,17 +49,19 @@ class TurtleController(Node):
         self.drawing = False
 
     def set_abs_angle(self, theta):
-            cliente = self.create_client(TeleportAbsolute, '/turtle1/teleport_absolute')
-            while not cliente.wait_for_service(timeout_sec=1.0):
-                pass
-            req = TeleportAbsolute.Request()
-            req.x = float(self.x)
-            req.y = float(self.y)
-            req.theta = float(theta)
-            cliente.call(req)
-            time.sleep(0.2)
+        # Establece el ángulo absoluto de la tortuga
+        cliente = self.create_client(TeleportAbsolute, '/turtle1/teleport_absolute')
+        while not cliente.wait_for_service(timeout_sec=1.0):
+            pass
+        req = TeleportAbsolute.Request()
+        req.x = float(self.x)
+        req.y = float(self.y)
+        req.theta = float(theta)
+        cliente.call(req)
+        time.sleep(0.2)
 
-    def set_pen(self, pen_on = True):
+    def set_pen(self, pen_on=True):
+        # Establece el estado del lápiz (encendido o apagado)
         cliente = self.create_client(SetPen, '/turtle1/set_pen')
         while not cliente.wait_for_service(timeout_sec=1.0):
             pass
@@ -66,6 +74,7 @@ class TurtleController(Node):
         cliente.call(req)
 
     def move_turtle(self):
+        # Mueve la tortuga hacia adelante con velocidad y rotación
         msg = Twist()
         msg.linear.x = 2.0  # Velocidad hacia adelante
         msg.angular.z = 1.0  # Rotación
@@ -73,6 +82,7 @@ class TurtleController(Node):
         self.get_logger().info('Moviendo la tortuga')
 
     def move_turtle2(self):
+        # Controla el movimiento basado en las teclas presionadas
         msg = Twist()
 
         if self.turn_off:
@@ -117,6 +127,7 @@ class TurtleController(Node):
         self.action = ""
 
     def move_forward(self, speed, t):
+        # Mueve la tortuga hacia adelante por un tiempo determinado
         msg = Twist()
         msg.linear.x = speed
         self.publisher_.publish(msg)
@@ -125,7 +136,7 @@ class TurtleController(Node):
         self.publisher_.publish(msg)
 
     def drawCharacter(self, char):
-
+        # Dibuja caracteres (M, S, I, A, C, P, V) con la tortuga
         if char == 'p':
             msg = Twist()
 
@@ -299,6 +310,7 @@ class TurtleController(Node):
         self.drawing = False
 
     def rotate_turtle(self, angulo):
+        # Rota la tortuga en un ángulo relativo
         cliente = self.create_client(TeleportRelative, '/turtle1/teleport_relative')
 
         while not cliente.wait_for_service(timeout_sec=1.0):
@@ -312,8 +324,9 @@ class TurtleController(Node):
         time.sleep(0.2)
 
     def read_keys(self, stdscr, stop_event):
-        curses.curs_set(0) # Ocultar el cursor
-        stdscr.nodelay(1) # Evitar bloqueo esperando tecla
+        # Lee las teclas de control para mover la tortuga
+        curses.curs_set(0)  # Ocultar el cursor
+        stdscr.nodelay(1)  # Evitar bloqueo esperando tecla
 
         while rclpy.ok() and not stop_event.is_set():
             stdscr.clear()
@@ -340,7 +353,7 @@ class TurtleController(Node):
                 if key != -1:
                     stdscr.addstr(11, 0, f"Key: {chr(key)}")
                     try:
-                        
+                        # Verifica la tecla presionada y realiza la acción correspondiente
                         if chr(key).lower() == 'm':
                             self.drawing = True
                             self.action = "Draw_M"
@@ -350,58 +363,45 @@ class TurtleController(Node):
                         elif chr(key).lower() == 'i':
                             self.drawing = True
                             self.action = "Draw_I"
-                        elif chr(key).lower() == 'c':
-                            self.drawing = True
-                            self.action = "Draw_C"
                         elif chr(key).lower() == 'a':
                             self.drawing = True
                             self.action = "Draw_A"
+                        elif chr(key).lower() == 'c':
+                            self.drawing = True
+                            self.action = "Draw_C"
                         elif chr(key).lower() == 'v':
-                            self.drawing = True
+                            self.drawing = False
                             self.action = "Draw_V"
-                        elif chr(key).lower() == 'p':
-                            self.drawing = True
-                            self.action = "Draw_P"
-                        elif key == curses.KEY_UP:
-                            self.running = True
+                        elif chr(key).lower() == 'w':
                             self.action = "Up"
-                        elif key == curses.KEY_DOWN:
-                            self.running = True
+                        elif chr(key).lower() == 's':
                             self.action = "Down"
-                        elif key == curses.KEY_LEFT:
-                            self.running = True
+                        elif chr(key).lower() == 'a':
                             self.action = "Left"
-                        elif key == curses.KEY_RIGHT:
-                            self.running = True
+                        elif chr(key).lower() == 'd':
                             self.action = "Right"
-                        else:
+                        elif chr(key).lower() == 'q':
                             self.running = False
-                            self.action = ""
-                    except ValueError:
-                        continue
-            stdscr.refresh()
+                            stop_event.set()
+                            break
+                    except Exception as e:
+                        print(e)
+
             time.sleep(0.1)
 
-def run_curses(node, stop_event):
-    curses.wrapper(lambda stdscr: node.read_keys(stdscr, stop_event))
-
-def main(args=None):
-    rclpy.init(args=args)
-    node = TurtleController()
+    def main():
+        # Inicia ROS2 y crea el nodo
+        rclpy.init()
+        controller = TurtleController()
     
-    stop_event = threading.Event()
-    thread = threading.Thread(target=run_curses, args=(node, stop_event), daemon=True)
-    thread.start()
-
-    try:
-        rclpy.spin(node)
-    except KeyboardInterrupt:
-        pass
-    finally:
-        stop_event.set()
-        thread.join()
-        node.destroy_node()
-        context = rclpy.get_default_context()
-        if context.ok():
-            rclpy.shutdown()
-
+        stop_event = threading.Event()
+        stdscr_thread = threading.Thread(target=controller.read_keys, args=(None, stop_event), daemon=True)
+    
+        stdscr_thread.start()
+        rclpy.spin(controller)
+    
+        controller.destroy_node()
+        rclpy.shutdown()
+    
+    if __name__ == '__main__':
+        main()
