@@ -7,6 +7,8 @@ Integrantes:
 
 ## Laboratorio No. 1
 
+### Diagrama de flujo
+
 ```mermaid
 flowchart TD
     A[Inicio] --> B[Imprimir controles en pantalla]
