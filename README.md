@@ -30,7 +30,7 @@ El objetivo de este laboratorio es controlar una tortuga en el simulador `turtle
 - **`set_pen`**: Enciende o apaga el lápiz que deja la estela de la tortuga.
 - **`move_turtle` y `move_turtle2`**: Controlan el movimiento de la tortuga basado en la acción actual (teclas presionadas o dibujo).
 - **`move_forward`**: Mueve la tortuga hacia adelante a una velocidad y tiempo determinados.
-- **`drawCharacter`**: Implementa la lógica para dibujar diferentes letras (`M`, `A`, `S`, `I`, `C`, `P`) mediante combinaciones de movimientos y rotaciones.
+- **`drawCharacter`**: Implementa la lógica para dibujar diferentes letras ( A, S, C, P, I, M)  mediante combinaciones de movimientos y rotaciones.
 - **`rotate_turtle`**: Rota a la tortuga un ángulo relativo especificado usando el servicio de teletransporte relativo.
 - **`read_keys`**: Usa la librería `curses` para leer entradas de teclado de manera continua y que no se bloquee. Asocia teclas específicas a acciones de movimiento o de dibujo.
 - **`run_curses` y `main`**: Lanzan la lectura de teclado en un hilo separado y ejecutan el nodo de ROS 2 de manera continua.
@@ -50,7 +50,7 @@ El objetivo de este laboratorio es controlar una tortuga en el simulador `turtle
 - **Servicios de teletransporte**: Para posicionar y rotar a la tortuga de manera precisa, se emplean los servicios `TeleportRelative` y `TeleportAbsolute` en lugar de comandos de velocidad tradicionales.
 
 ### Funcionamiento general
-Entonces, como funcionamiento general se tiene que el usuario ejecuta el nodo `turtle_controller`. Desde la terminal, mediante las teclas de dirección, puede mover a la tortuga hacia adelante, atrás o girarla. También puede presionar letras específicas ( `A`, `S`, `C`, `P`, `I`, `M`) para que la tortuga dibuje esa letra en la pantalla del `turtlesim`. Adicionalmente, la tecla `V` limpia la pantalla. Todo esto ocurre mientras el nodo mantiene actualizada la posición y estado de la tortuga en tiempo real.
+Entonces, como funcionamiento general se tiene que el usuario ejecuta el nodo `turtle_controller`. Desde la terminal, mediante las teclas de dirección, puede mover a la tortuga hacia adelante, atrás o girarla. También puede presionar letras específicas (`M`, `A`, `S`, `I`, `C`, `P`) para que la tortuga dibuje esa letra en la pantalla del `turtlesim`. Adicionalmente, la tecla `V` limpia la pantalla. Todo esto ocurre mientras el nodo mantiene actualizada la posición y estado de la tortuga en tiempo real.
 
 
 ### Diagrama de flujo
