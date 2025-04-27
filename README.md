@@ -20,12 +20,18 @@ flowchart TD
     F -- No --> I{Flecha abajo?}
     G -- Sí --> J[Dibujar letra]
     G -- No --> K{Letra V?}
+    H --> C
     I -- Sí --> L[Mover hacia abajo]
     I -- No --> M{Flecha izquierda?}
+    J --> C
     K -- Sí --> N[Limpiar pantalla]
     K -- No --> C
+    L --> C
     M -- Sí --> O[Girar a la izquierda]
     M -- No --> P{Flecha derecha?}
+    N --> C
+    O --> C
     P -- Sí --> Q[Girar a la derecha]
     P -- No --> C
+    K --> C
 ```
