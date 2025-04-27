@@ -83,4 +83,8 @@ flowchart TD
     P -- No --> C
     Q --> C
 ```
+### Video explicativo
+
+[![Alt text](https://img.youtube.com/vi/uSUkn7wwos /0.jpg)](https://www.youtube.com/watch?v=uSUkn7wwos)
+
 ---
