@@ -11,8 +11,6 @@ Integrantes:
 ### Objetivos
 El objetivo de este laboratorio es controlar una tortuga en el simulador `turtlesim` utilizando ROS 2. En el código se implementa un nodo llamado `turtle_controller`, que permite mover la tortuga de forma manual con el teclado y dibujar las letras de las iniciales de los estudiantes (A, S, C, P, I y M) en la pantalla. Además, se integra una función para limpiar la pantalla del simulador.
 
-br /
-
 *Librerías utilizadas*
 - `rclpy`: Permite programar nodos en Python utilizando ROS 2.
 - `rclpy.node.Node`: Clase base para crear nodos ROS 2.
