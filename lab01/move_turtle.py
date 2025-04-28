@@ -60,7 +60,7 @@ class TurtleController(Node):
         cliente.call(req)
         time.sleep(0.2)
 
-    def set_pen(self, pen_on=True):
+    def set_pen(self, pen_on = True):
         # Establece el estado del lápiz (encendido o apagado)
         cliente = self.create_client(SetPen, '/turtle1/set_pen')
         while not cliente.wait_for_service(timeout_sec=1.0):
@@ -325,8 +325,8 @@ class TurtleController(Node):
 
     def read_keys(self, stdscr, stop_event):
         # Lee las teclas de control para mover la tortuga
-        curses.curs_set(0)  # Ocultar el cursor
-        stdscr.nodelay(1)  # Evitar bloqueo esperando tecla
+        curses.curs_set(0) # Ocultar el cursor
+        stdscr.nodelay(1) # Evitar bloqueo esperando tecla
 
         while rclpy.ok() and not stop_event.is_set():
             stdscr.clear()
@@ -353,7 +353,7 @@ class TurtleController(Node):
                 if key != -1:
                     stdscr.addstr(11, 0, f"Key: {chr(key)}")
                     try:
-                        # Verifica la tecla presionada y realiza la acción correspondiente
+                        
                         if chr(key).lower() == 'm':
                             self.drawing = True
                             self.action = "Draw_M"
@@ -363,47 +363,58 @@ class TurtleController(Node):
                         elif chr(key).lower() == 'i':
                             self.drawing = True
                             self.action = "Draw_I"
-                        elif chr(key).lower() == 'a':
-                            self.drawing = True
-                            self.action = "Draw_A"
                         elif chr(key).lower() == 'c':
                             self.drawing = True
                             self.action = "Draw_C"
-                        elif chr(key).lower() == 'v':
-                            self.drawing = False
-                            self.action = "Draw_V"
-                        elif chr(key).lower() == 'w':
-                            self.action = "Up"
-                        elif chr(key).lower() == 's':
-                            self.action = "Down"
                         elif chr(key).lower() == 'a':
+                            self.drawing = True
+                            self.action = "Draw_A"
+                        elif chr(key).lower() == 'v':
+                            self.drawing = True
+                            self.action = "Draw_V"
+                        elif chr(key).lower() == 'p':
+                            self.drawing = True
+                            self.action = "Draw_P"
+                        elif key == curses.KEY_UP:
+                            self.running = True
+                            self.action = "Up"
+                        elif key == curses.KEY_DOWN:
+                            self.running = True
+                            self.action = "Down"
+                        elif key == curses.KEY_LEFT:
+                            self.running = True
                             self.action = "Left"
-                        elif chr(key).lower() == 'd':
+                        elif key == curses.KEY_RIGHT:
+                            self.running = True
                             self.action = "Right"
-                        elif chr(key).lower() == 'q':
+                        else:
                             self.running = False
-                            stop_event.set()
-                            break
-                    except Exception as e:
-                        print(e)
-
+                            self.action = ""
+                    except ValueError:
+                        continue
+            stdscr.refresh()
             time.sleep(0.1)
-    def run_curses(node, stop_event):    
-        curses.wrapper(lambda stdscr: node.read_keys(stdscr, stop_event))
+
+def run_curses(node, stop_event):
+    curses.wrapper(lambda stdscr: node.read_keys(stdscr, stop_event))
+
+def main(args=None):
+    # Inicia ROS2 y crea el nodo
+    rclpy.init(args=args)
+    node = TurtleController()
     
-    def main():
-        # Inicia ROS2 y crea el nodo
-        rclpy.init()
-        controller = TurtleController()
-    
-        stop_event = threading.Event()
-        stdscr_thread = threading.Thread(target=controller.read_keys, args=(None, stop_event), daemon=True)
-    
-        stdscr_thread.start()
-        rclpy.spin(controller)
-    
-        controller.destroy_node()
-        rclpy.shutdown()
-    
-    if __name__ == '__main__':
-        main()
+    stop_event = threading.Event()
+    thread = threading.Thread(target=run_curses, args=(node, stop_event), daemon=True)
+    thread.start()
+
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        stop_event.set()
+        thread.join()
+        node.destroy_node()
+        context = rclpy.get_default_context()
+        if context.ok():
+            rclpy.shutdown()
