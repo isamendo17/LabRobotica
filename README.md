@@ -87,67 +87,44 @@ flowchart TD
 ### Video explicativo
 
 ```mermaid
-mindmap
-  root((Dispositivo Inteligente de Monitoreo de Suelo Agrícola))
+graph TD
+  A[1. Proyecto de Sistema de Información]
   
-    Dirección del Proyecto
-      Definición de objetivos
-      Identificación de partes interesadas
-      Planificación y cronograma
-      Gestión de riesgos
-      Presupuesto y adquisiciones
+  A1[1.1 Documento de Análisis]
+  A2[1.2 Documento de Diseño]
+  A3[1.3 Software Desarrollado e Instalado]
+  A4[1.4 Reportes de Prueba]
+  A5[1.5 Entrega a Operaciones]
 
-    Diseño del Sistema
-      Requisitos del sistema
-      Arquitectura general del dispositivo
-      Selección de sensores
-        Sensor de temperatura
-        Sensor de pH
-        Sensor de humedad del suelo
-      Selección de microcontrolador / microprocesador
-      Diseño de la carcasa y protección ambiental
+  A --> A1
+  A --> A2
+  A --> A3
+  A --> A4
+  A --> A5
 
-    Desarrollo del Hardware
-      Integración de sensores
-      Módulo de adquisición de datos en tiempo real
-      Diseño del sistema de almacenamiento local
-      Sistema de alimentación
-      Ensamble y pruebas eléctricas
+  A1 --> A11[1.1.1 Especificación Funcional]
+  A1 --> A12[1.1.2 Requerimientos Funcionales]
+  A1 --> A13[1.1.3 Requerimientos No Funcionales]
 
-    Desarrollo del Software
-      Firmware de adquisición y gestión de datos
-      Envío de datos a la IA
-      Procesamiento de datos con IA
-      Interfaz de usuario
-      Interpretación amigable para el agricultor
-        Uso de iconografía o colores intuitivos
-        Traducción de resultados a recomendaciones prácticas
+  A2 --> A21[1.2.1 Diseño Funcional]
+  A2 --> A22[1.2.2 Diseño Técnico]
+  A2 --> A23[1.2.3 Casos de Prueba]
+  A2 --> A24[1.2.4 Planificación]
 
-    Integración de IA
-      Definición de prompts para la IA
-      Selección de modelo
-      Diseño del flujo de interacción con IA
-      Evaluación de respuestas y ajuste de prompts
-      Implementación de recomendaciones personalizadas
+  A3 --> A31[1.3.1 Ambiente de Desarrollo]
+  A3 --> A32[1.3.2 Módulo 1]
+  A3 --> A33[1.3.3 Módulo 2]
+  A3 --> A34[1.3.4 Módulo 3]
+  A3 --> A35[1.3.5 Módulo 4]
 
-    Pruebas y Validación
-      Pruebas de funcionamiento del hardware
-      Validación de mediciones de sensores
-      Simulación de escenarios agrícolas reales
-      Pruebas de usabilidad con agricultores
-      Ajustes según retroalimentación
+  A4 --> A41[1.4.1 Ambiente de Pruebas]
+  A4 --> A42[1.4.2 Pruebas Integrales]
+  A4 --> A43[1.4.3 Pruebas de Aceptación de Usuario]
+  A4 --> A44[1.4.4 Certificaciones Técnicas]
 
-    Capacitación y Documentación
-      Manual de uso para agricultores
-      Manual técnico de mantenimiento
-      Guía de interpretación de resultados
-      Capacitación presencial o virtual
-
-    Despliegue y Escalado
-      Instalación piloto en campo real
-      Evaluación de impacto agrícola inicial
-      Optimización de producción en escala
-      Estrategia de distribución y soporte
+  A5 --> A51[1.5.1 Reporte de Puesta en Producción]
+  A5 --> A52[1.5.2 Pruebas Posproducción]
+  A5 --> A53[1.5.3 Garantía
 ```
 
 [![Alt text](https://img.youtube.com/vi/YuSUkn7wwos/0.jpg)](https://www.youtube.com/watch?v=YuSUkn7wwos)
