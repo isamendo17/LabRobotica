@@ -83,7 +83,72 @@ flowchart TD
     P -- No --> C
     Q --> C
 ```
+
 ### Video explicativo
+
+```mermaid
+mindmap
+  root((Dispositivo Inteligente de Monitoreo de Suelo Agrícola))
+  
+    Dirección del Proyecto
+      Definición de objetivos
+      Identificación de partes interesadas
+      Planificación y cronograma
+      Gestión de riesgos
+      Presupuesto y adquisiciones
+
+    Diseño del Sistema
+      Requisitos del sistema
+      Arquitectura general del dispositivo
+      Selección de sensores
+        Sensor de temperatura
+        Sensor de pH
+        Sensor de humedad del suelo
+      Selección de microcontrolador / microprocesador
+      Diseño de la carcasa y protección ambiental
+
+    Desarrollo del Hardware
+      Integración de sensores
+      Módulo de adquisición de datos en tiempo real
+      Diseño del sistema de almacenamiento local
+      Sistema de alimentación
+      Ensamble y pruebas eléctricas
+
+    Desarrollo del Software
+      Firmware de adquisición y gestión de datos
+      Envío de datos a la IA
+      Procesamiento de datos con IA
+      Interfaz de usuario
+      Interpretación amigable para el agricultor
+        Uso de iconografía o colores intuitivos
+        Traducción de resultados a recomendaciones prácticas
+
+    Integración de IA
+      Definición de prompts para la IA
+      Selección de modelo
+      Diseño del flujo de interacción con IA
+      Evaluación de respuestas y ajuste de prompts
+      Implementación de recomendaciones personalizadas
+
+    Pruebas y Validación
+      Pruebas de funcionamiento del hardware
+      Validación de mediciones de sensores
+      Simulación de escenarios agrícolas reales
+      Pruebas de usabilidad con agricultores
+      Ajustes según retroalimentación
+
+    Capacitación y Documentación
+      Manual de uso para agricultores
+      Manual técnico de mantenimiento
+      Guía de interpretación de resultados
+      Capacitación presencial o virtual
+
+    Despliegue y Escalado
+      Instalación piloto en campo real
+      Evaluación de impacto agrícola inicial
+      Optimización de producción en escala
+      Estrategia de distribución y soporte
+```
 
 [![Alt text](https://img.youtube.com/vi/YuSUkn7wwos/0.jpg)](https://www.youtube.com/watch?v=YuSUkn7wwos)
 
