@@ -87,32 +87,38 @@ flowchart TD
 ### Video explicativo
 
 ```mermaid
-mindmap
-  root((1. Proyecto de Sistema de Información))
-    1.1 Documento de Análisis
-      1.1.1 Especificación Funcional
-      1.1.2 Requerimientos Funcionales
-      1.1.3 Requerimientos No Funcionales
-    1.2 Documento de Diseño
-      1.2.1 Diseño Funcional
-      1.2.2 Diseño Técnico
-      1.2.3 Casos de Prueba
-      1.2.4 Planificación
-    1.3 Software Desarrollado e Instalado
-      1.3.1 Ambiente de Desarrollo
-      1.3.2 Módulo 1
-      1.3.3 Módulo 2
-      1.3.4 Módulo 3
-      1.3.5 Módulo 4
-    1.4 Reportes de Prueba
-      1.4.1 Ambiente de Pruebas
-      1.4.2 Pruebas Integrales
-      1.4.3 Pruebas de Aceptación de Usuario
-      1.4.4 Certificaciones Técnicas
-    1.5 Entrega a Operaciones
-      1.5.1 Reporte de Puesta en Producción
-      1.5.2 Pruebas Posproducción
-      1.5.3 Garantía
+graph TB
+  A[1. Proyecto de Sistema de Información]
+  
+  A --> A1[1.1 Documento de Análisis]
+  A --> A2[1.2 Documento de Diseño]
+  A --> A3[1.3 Software Desarrollado e Instalado]
+  A --> A4[1.4 Reportes de Prueba]
+  A --> A5[1.5 Entrega a Operaciones]
+
+  A1 --> A11[1.1.1 Especificación Funcional]
+  A1 --> A12[1.1.2 Requerimientos Funcionales]
+  A1 --> A13[1.1.3 Requerimientos No Funcionales]
+
+  A2 --> A21[1.2.1 Diseño Funcional]
+  A2 --> A22[1.2.2 Diseño Técnico]
+  A2 --> A23[1.2.3 Casos de Prueba]
+  A2 --> A24[1.2.4 Planificación]
+
+  A3 --> A31[1.3.1 Ambiente de Desarrollo]
+  A3 --> A32[1.3.2 Módulo 1]
+  A3 --> A33[1.3.3 Módulo 2]
+  A3 --> A34[1.3.4 Módulo 3]
+  A3 --> A35[1.3.5 Módulo 4]
+
+  A4 --> A41[1.4.1 Ambiente de Pruebas]
+  A4 --> A42[1.4.2 Pruebas Integrales]
+  A4 --> A43[1.4.3 Pruebas de Aceptación de Usuario]
+  A4 --> A44[1.4.4 Certificaciones Técnicas]
+
+  A5 --> A51[1.5.1 Reporte de Puesta en Producción]
+  A5 --> A52[1.5.2 Pruebas Posproducción]
+  A5 --> A53[1.5.3 Garantía]
 ```
 
 [![Alt text](https://img.youtube.com/vi/YuSUkn7wwos/0.jpg)](https://www.youtube.com/watch?v=YuSUkn7wwos)
